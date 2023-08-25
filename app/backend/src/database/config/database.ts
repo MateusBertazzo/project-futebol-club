@@ -12,5 +12,5 @@ const config: Options = {
   },
   logging: false,
 }
-
+// teste
 export = config;
