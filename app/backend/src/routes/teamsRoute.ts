@@ -5,6 +5,6 @@ const teamsRoute = new TeamsController();
 
 const router = Router();
 
-router.get('/teams', (req, res) => teamsRoute.getAllTeams(req, res));
+router.get('/', (req, res) => teamsRoute.getAllTeams(req, res));
 
 export default router;
