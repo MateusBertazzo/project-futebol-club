@@ -10,6 +10,10 @@ export interface ICRUDModelReader<T> {
   getById(id: ID): Promise<T | null>,
 }
 
+export interface ICRUDModelReaderByEmail<T> {
+  getByEmail(email: string): Promise<T | null>,
+}
+
 export interface ICRUDModelUpdater<T> {
   update(id: ID, data: Partial<T>): Promise<T | null>,
 }
