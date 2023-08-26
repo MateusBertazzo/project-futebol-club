@@ -12,4 +12,9 @@ export default class TeamsService {
     const teams = await this.teamsModel.getAll();
     return { status: 'SUCCESSFUL', data: teams };
   }
+
+  async getTeamById(id: number): Promise<ServiceResponse<ITeams | null>> {
+    const team = await this.teamsModel.getById(id);
+    return { status: 'SUCCESSFUL', data: team };
+  }
 }
