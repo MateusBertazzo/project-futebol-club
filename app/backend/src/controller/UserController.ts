@@ -10,7 +10,7 @@ export default class UserController {
     const response = await this.userService.getByEmail(req.body);
 
     if (response.status !== 'SUCCESSFUL') {
-      return res.status(400).json(response.data);
+      return res.status(401).json(response.data);
     }
 
     return res.status(200).json(response.data);

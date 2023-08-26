@@ -11,13 +11,13 @@ export default class UserService {
 
   async getByEmail(data: ILogin): Promise<ServiceResponse<ServiceMessage | IToken>> {
     const user = await this.userModel.getByEmail(data.email);
+
     if (!user) {
-      return { status: 'INVALID_DATA', data: { message: 'All fields must be filled' } };
+      return { status: 'INVALID_DATA', data: { message: 'Invalid email or password' } };
     }
     if (!bcrypt.compareSync(data.password, user.password)) {
-      return { status: 'INVALID_DATA', data: { message: 'All fields must be filled' } };
+      return { status: 'INVALID_DATA', data: { message: 'Invalid email or password' } };
     }
-
     // const { email } = user as ILogin;
     const token = JWT.sign({ email: user.email });
 

@@ -9,7 +9,7 @@ export default class JWT {
   };
 
   static sign(payload: JwtPayload): string {
-    return sign({ ...payload }, this.secret, this.jwtConfig);
+    return sign(payload, this.secret, this.jwtConfig);
   }
 
   static verify(token: string): JwtPayload | string {
