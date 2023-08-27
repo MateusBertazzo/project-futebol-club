@@ -7,12 +7,13 @@ import { app } from '../app';
 import Example from '../database/models/ExampleModel';
 
 import { Response } from 'superagent';
+import Team from '../database/models/Team';
 
 chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Seu teste', () => {
+describe('Testando Teams', () => {
   /**
    * Exemplo do uso de stubs com tipos
    */
@@ -38,8 +39,40 @@ describe('Seu teste', () => {
 
   //   expect(...)
   // });
+  afterEach(() => {
+    sinon.restore();
+  });
 
-  it('Seu sub-teste', () => {
-    expect(false).to.be.eq(true);
+  it('Testando Rota getAll',async () => {
+    const teamsMock = [
+      {
+        "id": 1,
+        "teamName": "Avaí/Kindermann"
+      },
+      {
+        "id": 2,
+        "teamName": "Bahia"
+      },
+    ] 
+    sinon.stub(Team, 'findAll').resolves(teamsMock as Team[]);
+
+    const res: Response = await chai.request(app).get('/teams').send(); 
+
+    expect(res.status).to.be.equal(200);
+    expect(res.body).to.be.deep.equal(teamsMock);
+    expect(res.body.length).to.be.equal(2);
+  });
+
+  it('Testando Rota getById',async () => {
+    const teamMock = {
+      "id": 1,
+      "teamName": "Avaí/Kindermann"
+    }
+    sinon.stub(Team, 'findByPk').resolves(teamMock as Team);
+
+    const res: Response = await chai.request(app).get('/teams/1').send(); 
+
+    expect(res.status).to.be.equal(200);
+    expect(res.body).to.be.deep.equal(teamMock);
   });
 });
