@@ -15,4 +15,15 @@ export default class UserController {
 
     return res.status(200).json(response.data);
   }
+
+  static async loginValidate(req: Request, res: Response): Promise<Response> {
+    const { email } = req.body;
+
+    const response = await UserService.loginValidate(email);
+
+    if (response.status === 'NOT_FOUND') return res.status(401).json(response.data);
+
+    console.log(response.data);
+    return res.status(200).json(response.data);
+  }
 }

@@ -1,5 +1,6 @@
 // Tipagem de resposta de serviços genericos de CRUD da camada Service.
 export type ServiceMessage = { message: string };
+export type ServiceData = { data: object };
 
 type ServiceResponseErrorType = 'INVALID_DATA' | 'UNAUTHORIZED' | 'NOT_FOUND' | 'CONFLICT';
 

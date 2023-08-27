@@ -12,6 +12,7 @@ export interface ICRUDModelReader<T> {
 
 export interface ICRUDModelReaderByEmail<T> {
   getByEmail(email: string): Promise<T | null>,
+  // getByEmailAndRole(email: string): Promise<T | object>,
 }
 
 export interface ICRUDModelUpdater<T> {
