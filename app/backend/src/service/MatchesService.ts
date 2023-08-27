@@ -38,9 +38,10 @@ export default class MatchesService {
     homeTeamGoals, awayTeamGoals, homeTeamId, awayTeamId } : IMatcheBodyCreate) {
     const allTeams = await Team.findAll();
 
+    const messageError = 'It is not possible to create a match with two equal teams';
+
     if (homeTeamId === awayTeamId) {
-      return { status: 'error',
-        data: { message: 'It is not possible to create a match with two equal teams' } };
+      return { status: 'error', data: { message: messageError } };
     }
 
     const homeTeamExist = validateTeamExist(homeTeamId, allTeams);

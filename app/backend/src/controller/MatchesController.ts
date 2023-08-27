@@ -9,6 +9,7 @@ export default class MatchesController {
       const response = await MatchesService.getAllMatches();
       const matchesInProgress = response
         .data.filter((match) => match.inProgress === true);
+
       return res.status(200).json(matchesInProgress);
     }
 
