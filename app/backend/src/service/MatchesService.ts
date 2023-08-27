@@ -11,4 +11,10 @@ export default class MatchesService {
     });
     return { status: 'success', data: matches };
   }
+
+  static async finishMatch(matchId: number) {
+    const resultMatch = await Matche.update({ inProgress: false }, { where: { id: matchId } });
+
+    return { status: 'success', data: resultMatch };
+  }
 }
