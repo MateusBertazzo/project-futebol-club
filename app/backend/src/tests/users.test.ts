@@ -28,7 +28,7 @@ describe('Testando Users', () => {
         expect(res.body).to.have.property('token');
     })
 
-    it('Testando Rota GET de login', async () => {
+    it('Testando Rota GET de login em caso de token valido', async () => {
         sinon.stub(User, 'findOne').resolves(userMock as User);
 
         const { body: { token } }: Response = await chai.request(app).post('/login').send(login);
