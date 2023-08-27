@@ -1,6 +1,7 @@
 import Team from '../database/models/Team';
 import Matche from '../database/models/Matche';
-import IMatcheBody from '../Interfaces/IMatche/IMatcheBody';
+import IMatcheBody, { IMatcheBodyCreate } from '../Interfaces/IMatche/IMatcheBody';
+import validateTeamExist from '../utils/teamExistValidate';
 
 export default class MatchesService {
   static async getAllMatches() {
@@ -31,5 +32,28 @@ export default class MatchesService {
         );
 
     return { status: 'success', data: resultMatch };
+  }
+
+  static async createMatche({
+    homeTeamGoals, awayTeamGoals, homeTeamId, awayTeamId } : IMatcheBodyCreate) {
+    const allTeams = await Team.findAll();
+
+    if (homeTeamId === awayTeamId) {
+      return { status: 'error',
+        data: { message: 'It is not possible to create a match with two equal teams' } };
+    }
+
+    const homeTeamExist = validateTeamExist(homeTeamId, allTeams);
+    const awayTeamExist = validateTeamExist(awayTeamId, allTeams);
+
+    if (!homeTeamExist || !awayTeamExist) {
+      return { status: 'NOT FOUND', data: { message: 'There is no team with such id!' } };
+    }
+
+    const matcheCreate = await Matche.create({
+      homeTeamGoals, awayTeamGoals, homeTeamId, awayTeamId, inProgress: true,
+    });
+
+    return { status: 'success', data: matcheCreate };
   }
 }

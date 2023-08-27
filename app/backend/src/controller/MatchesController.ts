@@ -43,4 +43,18 @@ export default class MatchesController {
 
     return res.status(200).json(response.status);
   }
+
+  static async createMatche(req: Request, res: Response): Promise<Response> {
+    const response = await MatchesService.createMatche(req.body);
+
+    if (response.status === 'error') {
+      return res.status(422).json(response.data);
+    }
+
+    if (response.status === 'NOT FOUND') {
+      return res.status(404).json(response.data);
+    }
+
+    return res.status(201).json(response.data);
+  }
 }
