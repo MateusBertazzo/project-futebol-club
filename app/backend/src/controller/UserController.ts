@@ -17,13 +17,12 @@ export default class UserController {
   }
 
   static async loginValidate(req: Request, res: Response): Promise<Response> {
-    const { email } = req.body;
+    const { email } = req.body.user;
 
     const response = await UserService.loginValidate(email);
 
     if (response.status === 'NOT_FOUND') return res.status(401).json(response.data);
 
-    console.log(response.data);
     return res.status(200).json(response.data);
   }
 }

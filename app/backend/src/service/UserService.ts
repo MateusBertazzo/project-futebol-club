@@ -25,9 +25,9 @@ export default class UserService {
     return { status: 'SUCCESSFUL', data: { token } };
   }
 
-  static async loginValidate(email: string): Promise<ServiceResponse<ServiceMessage | string>> {
+  static async loginValidate(email: string): Promise<ServiceResponse<ServiceMessage | object>> {
     const user = await UserDb.findOne({ where: { email } }) as ILoginRole;
 
-    return { status: 'SUCCESSFUL', data: user.role };
+    return { status: 'SUCCESSFUL', data: { role: user.role } };
   }
 }

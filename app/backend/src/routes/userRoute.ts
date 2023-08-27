@@ -18,7 +18,6 @@ routerUser.post(
 routerUser.get(
   '/login/role',
   validateToken,
-  validateEmail,
   (req, res) => UserController.loginValidate(req, res),
 );
 

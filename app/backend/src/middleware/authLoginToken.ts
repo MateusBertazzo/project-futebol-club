@@ -9,7 +9,7 @@ function validateToken(req: Request, res: Response, next: NextFunction) {
   }
 
   try {
-    const tokenReplace = token.replace('Bearer', '');
+    const tokenReplace = token.replace('Bearer ', '');
 
     const tokenDecoded = jwt.verify(tokenReplace);
 
