@@ -6,9 +6,9 @@ export default class leaderLogic {
     const side = teamSide === 'home' ? 'homeTeamId' : 'awayTeamId';
     const goals = teamSide === 'home' ? 'homeTeamGoals' : 'awayTeamGoals';
 
-    const relevantMatches = matches.filter((match) => match[side] === teamId);
+    const totalMatches = matches.filter((match) => match[side] === teamId);
 
-    const victories = relevantMatches.filter((match) =>
+    const victories = totalMatches.filter((match) =>
       match[goals] > match[side === 'homeTeamId' ? 'awayTeamGoals' : 'homeTeamGoals']);
 
     return victories.length;
@@ -18,9 +18,9 @@ export default class leaderLogic {
     const side = teamSide === 'home' ? 'homeTeamId' : 'awayTeamId';
     const goals = teamSide === 'home' ? 'homeTeamGoals' : 'awayTeamGoals';
 
-    const relevantMatches = matches.filter((match) => match[side] === teamId);
+    const totalMatches = matches.filter((match) => match[side] === teamId);
 
-    const draws = relevantMatches.filter((match) =>
+    const draws = totalMatches.filter((match) =>
       match[goals] === match[side === 'homeTeamId' ? 'awayTeamGoals' : 'homeTeamGoals']);
 
     return draws.length;
@@ -30,9 +30,9 @@ export default class leaderLogic {
     const side = teamSide === 'home' ? 'homeTeamId' : 'awayTeamId';
     const goals = teamSide === 'home' ? 'homeTeamGoals' : 'awayTeamGoals';
 
-    const relevantMatches = matches.filter((match) => match[side] === teamId);
+    const totalMatches = matches.filter((match) => match[side] === teamId);
 
-    const defeat = relevantMatches.filter((match) =>
+    const defeat = totalMatches.filter((match) =>
       match[goals] < match[side === 'homeTeamId' ? 'awayTeamGoals' : 'homeTeamGoals']);
 
     return defeat.length;
@@ -41,9 +41,9 @@ export default class leaderLogic {
   static totalGames(matches: Matche[], teamId: number, teamSide: string) {
     const side = teamSide === 'home' ? 'homeTeamId' : 'awayTeamId';
 
-    const relevantMatches = matches.filter((match) => match[side] === teamId);
+    const totalMatches = matches.filter((match) => match[side] === teamId);
 
-    return relevantMatches.length;
+    return totalMatches.length;
   }
 
   static totalPoints(matches: Matche[], teamId: number, teamSide: string) {
@@ -57,9 +57,9 @@ export default class leaderLogic {
     const side = teamSide === 'home' ? 'homeTeamId' : 'awayTeamId';
     const goals = teamSide === 'home' ? 'homeTeamGoals' : 'awayTeamGoals';
 
-    const relevantMatches = matches.filter((match) => match[side] === teamId);
+    const totalMatches = matches.filter((match) => match[side] === teamId);
 
-    const goalsFavor = relevantMatches.reduce((acc, match) => acc + match[goals], 0);
+    const goalsFavor = totalMatches.reduce((acc, match) => acc + match[goals], 0);
 
     return goalsFavor;
   }
@@ -68,9 +68,9 @@ export default class leaderLogic {
     const side = teamSide === 'home' ? 'homeTeamId' : 'awayTeamId';
     const goals = teamSide === 'home' ? 'awayTeamGoals' : 'homeTeamGoals';
 
-    const relevantMatches = matches.filter((match) => match[side] === teamId);
+    const totalMatches = matches.filter((match) => match[side] === teamId);
 
-    const goalsConceded = relevantMatches.reduce((acc, match) => acc + match[goals], 0);
+    const goalsConceded = totalMatches.reduce((acc, match) => acc + match[goals], 0);
 
     return goalsConceded;
   }
