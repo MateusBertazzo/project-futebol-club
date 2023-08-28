@@ -19,7 +19,7 @@ describe('Testando Matches', () => {
     });
 
     it('Testando Rota getAll de matches', async () => {
-        sinon.stub(Matche, 'findAll').resolves(matchesMock as unknown as  Matche[]);
+        sinon.stub(Matche, 'findAll').resolves(matchesMock as Matche[]);
 
         const res: Response = await chai.request(app).get('/matches');
 
