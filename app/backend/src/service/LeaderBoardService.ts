@@ -6,7 +6,7 @@ export default class LeaderBoardService {
   protected modelMatche = Matche;
   protected modelTeam = Team;
 
-  async staticsHome(teamSide: string) {
+  async staticsResults(teamSide: string) {
     const matches = await this.modelMatche.findAll();
     const teams = await this.modelTeam.findAll();
 

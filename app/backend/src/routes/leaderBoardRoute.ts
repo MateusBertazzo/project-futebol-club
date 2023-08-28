@@ -10,4 +10,9 @@ leaderBoardRoute.get(
   (req, res) => leaderBoardController.staticsHome(req, res),
 );
 
+leaderBoardRoute.get(
+  '/leaderboard/away',
+  (req, res) => leaderBoardController.staticsAway(req, res),
+);
+
 export default leaderBoardRoute;
