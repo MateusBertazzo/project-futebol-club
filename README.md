@@ -1,10 +1,14 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+README
+
+- Project Futebol Club
+Responsável por desenvolver um site informativo sobre partidas e classificações de futebol. Desenvolvi uma API(CRUD), realizei testes seguindo a metodologia TDD e integrei as aplicações por meio do docker-compose, permitindo que elas consumissem um banco de dados MYSQL e o conectei com o Front-end da aplicação já construído.
+
+Tecnologias utilizadas:
+- Node JS
+- TypeScript
+- Express
+- JWT
+- Bcrypt
+- MySQL
+- Sequelize
+- Docker e Docker-Compose
